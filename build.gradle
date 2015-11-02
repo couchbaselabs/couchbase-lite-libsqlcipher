@@ -104,15 +104,19 @@ model {
                 cCompiler.args "-DSQLITE_ENABLE_FTS3_PARENTHESIS"
                 cCompiler.args "-DSQLITE_ENABLE_FTS4"
                 cCompiler.args "-DSQLITE_ENABLE_RTREE"
+                cCompiler.args "-fPIC"
 
                 if (toolChain in Gcc) {
-                    cCompiler.args "-fPIC"
+                    cCompiler.args "-ffunction-sections", "-fdata-sections", "-fomit-frame-pointer"
+                    linker.args "-Wl,--no-undefined"
                 }
+            }
 
-                if (targetPlatform.operatingSystem.linux) {
-                    linker.args "-Wl,-whole-archive,vendor/couchbase-lite-libcrypto/libs/linux/${arch}/libcrypto.a"
-                        linker.args "-Wl,-no-whole-archive"
-                }
+            binaries.withType(SharedLibraryBinary) {
+                //if (targetPlatform.operatingSystem.linux) {
+                //    linker.args "-Wl,-whole-archive,vendor/couchbase-lite-libcrypto/libs/linux/${arch}/libcrypto.a"
+                //        linker.args "-Wl,-no-whole-archive"
+                //}
             }
         }
     }

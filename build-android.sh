@@ -16,7 +16,7 @@ rm -rf libs
 rm -rf obj
 
 # Build static binaries:
-ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=./Application.mk APP_BUILD_SCRIPT=./Android-Static.mk 
+ndk-build -B NDK_PROJECT_PATH=. NDK_APPLICATION_MK=./Application.mk APP_BUILD_SCRIPT=./Android-Static.mk 
 
 # Copy binaries:
 cd obj/local
@@ -28,7 +28,7 @@ rm -rf libs
 rm -rf obj
 
 # Build shared binaries:
-ndk-build NDK_PROJECT_PATH=. NDK_APPLICATION_MK=./Application.mk APP_BUILD_SCRIPT=./Android-Shared.mk 
+ndk-build -B NDK_PROJECT_PATH=. NDK_APPLICATION_MK=./Application.mk APP_BUILD_SCRIPT=./Android-Shared.mk 
 
 # Copy binaries:
 cp -r libs/* $OUTPUT_DIR
