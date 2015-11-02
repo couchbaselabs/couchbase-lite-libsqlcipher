@@ -1,0 +1,6 @@
+[submodule "vendor/sqlcipher"]
+	path = vendor/sqlcipher
+	url = https://github.com/sqlcipher/sqlcipher.git
+[submodule "vendor/couchbase-lite-libcrypto"]
+	path = vendor/couchbase-lite-libcrypto
+	url = https://github.com/couchbaselabs/couchbase-lite-libcrypto
