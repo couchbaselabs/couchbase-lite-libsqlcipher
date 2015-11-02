@@ -111,6 +111,10 @@ model {
                     linker.args "-Wl,--no-undefined"
                     linker.args "-lpthread", "-ldl" 
                 }
+                
+                if (toolChain in VisualCpp) {
+                    linker.args "Advapi32.lib", "Gdi32.lib", "User32.lib"
+                }
             }
 
             binaries.withType(SharedLibraryBinary) {

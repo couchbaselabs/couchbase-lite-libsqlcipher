@@ -1,22 +1,31 @@
-@echo off
+@echo on
 
 :: Output Directory
 set OUTPUT_DIR="%CD%\libs\windows"
 
 :: Clean output directory
-rmdir /S /Q %OUTPUT_DIR%
+if EXIST %OUTPUT_DIR% (
+	rmdir /S /Q %OUTPUT_DIR%	
+)
+mkdir %OUTPUT_DIR%
 
 :: Clean build directory
-rmdir /S /Q build
+if EXIST build (
+	rmdir /S /Q build
+)
 
 :: build
-gradlew.bat build
+call gradlew.bat build
 
 :: Copy binaries
 cd build\libs
-jar xf couchbase-lite-libsqlcipher.jar libs
-Xcopy /E /I libs\* $OUTPUT_DIR
+call jar xf couchbase-lite-libsqlcipher.jar libs
+Xcopy /E /I libs\windows\* %OUTPUT_DIR%
 
-:: Finished:
+:: Finished
 cd ..\..\
-rmdir /S /Q build
+
+:: Clean build directory
+if EXIST build (
+	rmdir /S /Q build
+)
