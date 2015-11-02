@@ -1,4 +1,4 @@
-@echo on
+@echo off
 
 :: Output Directory
 set OUTPUT_DIR="%CD%\libs\windows"
