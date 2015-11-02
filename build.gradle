@@ -109,6 +109,7 @@ model {
                 if (toolChain in Gcc) {
                     cCompiler.args "-ffunction-sections", "-fdata-sections", "-fomit-frame-pointer"
                     linker.args "-Wl,--no-undefined"
+                    linker.args "-lpthread", "-ldl" 
                 }
             }
 

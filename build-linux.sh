@@ -6,7 +6,9 @@ set -e
 OUTPUT_DIR="`pwd`/libs/linux"
 
 # Clean output directory:
-rm -rf $OUTPUT_DIR
+if [ -d $OUTPUT_DIR ]; then
+    rm -rf $OUTPUT_DIR
+fi
 mkdir $OUTPUT_DIR
 
 # Clean build directory:
