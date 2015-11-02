@@ -9,17 +9,21 @@ OUTPUT_DIR="`pwd`/libs/osx"
 rm -rf $OUTPUT_DIR
 mkdir $OUTPUT_DIR
 
-# Clean build directory:
+# Goto project directory:
+cd src/xcode/libsqlcipher
+
+# Build static binary:
 rm -rf build
+xcodebuild -scheme osx-static -configuration Release -derivedDataPath build
+cp build/Build/Products/Release/libsqlcipher.a $OUTPUT_DIR
 
-# Build:
-./gradlew build
+# Build dynamic binary:
+rm -rf build
+xcodebuild -scheme osx-dynamic -configuration Release -derivedDataPath build
+cp build/Build/Products/Release/libsqlcipher.dylib $OUTPUT_DIR
 
-# Copy binaries:
-cd build/libs
-jar xf couchbase-lite-libsqlcipher.jar libs
-cp -r libs/* $OUTPUT_DIR
+# Clean
+rm -rf build
 
 # Finished:
-cd ../../
-rm -rf build
+cd ../../../
