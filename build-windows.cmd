@@ -19,7 +19,7 @@ call gradlew.bat build
 
 :: Copy binaries
 cd build\libs
-call jar xf couchbase-lite-libsqlcipher.jar libs
+call jar xf sqlcipher.jar libs
 Xcopy /E /I libs\windows\* %OUTPUT_DIR%
 
 :: Finished

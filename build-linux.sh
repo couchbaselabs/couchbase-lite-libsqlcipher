@@ -19,7 +19,7 @@ rm -rf build
 
 # Copy binaries:
 cd build/libs
-jar xf couchbase-lite-libsqlcipher.jar libs
+jar xf sqlcipher.jar libs
 cp -r libs/linux/* $OUTPUT_DIR
 
 # Finished:
