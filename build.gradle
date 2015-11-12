@@ -104,6 +104,7 @@ model {
                 cCompiler.args "-DSQLITE_ENABLE_FTS3_PARENTHESIS"
                 cCompiler.args "-DSQLITE_ENABLE_FTS4"
                 cCompiler.args "-DSQLITE_ENABLE_RTREE"
+				cCompiler.args "-DSQLITE_ENABLE_COLUMN_METADATA"
                 cCompiler.args "-fPIC"
 
                 if (toolChain in Gcc) {
@@ -113,7 +114,7 @@ model {
                 }
                 
                 if (toolChain in VisualCpp) {
-                    linker.args "Advapi32.lib", "Gdi32.lib", "User32.lib"
+                    linker.args "Advapi32.lib", "Gdi32.lib", "User32.lib", "/DEF:sqlite3.def"
                 }
             }
 
