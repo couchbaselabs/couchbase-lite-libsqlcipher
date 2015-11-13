@@ -15,7 +15,9 @@ cd src/xcode/libsqlcipher
 # Build static binary:
 rm -rf build
 xcodebuild -scheme ios-static -configuration Release -derivedDataPath build
-cp build/Build/Products/Release-iphoneos/libsqlcipher.a $OUTPUT_DIR
+xcodebuild -scheme ios-static -configuration Release -derivedDataPath build -sdk iphonesimulator
+
+lipo -create -output $OUTPUT_DIR/libsqlcipher.a build/Build/Products/Release-iphoneos/libsqlcipher.a build/Build/Products/Release-iphonesimulator/libsqlcipher.a
 
 # Clean
 rm -rf build

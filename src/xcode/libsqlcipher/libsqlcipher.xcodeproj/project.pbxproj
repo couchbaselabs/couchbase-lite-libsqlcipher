@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		931DCD0B1BE80CAC0025F6F3 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 931DCD0A1BE80CAC0025F6F3 /* libcrypto.a */; };
-		931DCD331BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; settings = {ASSET_TAGS = (); }; };
-		931DCD341BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; settings = {ASSET_TAGS = (); }; };
-		931DCD351BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; settings = {ASSET_TAGS = (); }; };
-		931DCD361BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; settings = {ASSET_TAGS = (); }; };
-		931DCD371BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; settings = {ASSET_TAGS = (); }; };
+		725120D21BF69E5D0071E4B0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725120D11BF69E5D0071E4B0 /* Security.framework */; };
+		725120D41BF69E620071E4B0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725120D31BF69E620071E4B0 /* Security.framework */; };
+		725120D51BF69E660071E4B0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 725120D11BF69E5D0071E4B0 /* Security.framework */; };
+		931DCD331BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; };
+		931DCD341BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; };
+		931DCD351BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; };
+		931DCD361BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; };
+		931DCD371BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +30,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		725120D11BF69E5D0071E4B0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
+		725120D31BF69E620071E4B0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		931DCCE91BE8044C0025F6F3 /* libsqlcipher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsqlcipher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		931DCCFF1BE80C6A0025F6F3 /* libsqlcipher.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libsqlcipher.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		931DCD0A1BE80CAC0025F6F3 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = "../../../vendor/couchbase-lite-libcrypto/libs/osx/libcrypto.a"; sourceTree = "<group>"; };
 		931DCD221BE81A2A0025F6F3 /* libsqlcipher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsqlcipher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		931DCD311BE81C570025F6F3 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sqlite3.c; path = ../../../c/sqlite3.c; sourceTree = "<group>"; };
 		931DCD321BE81C570025F6F3 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = ../../../headers/sqlite3.h; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				725120D41BF69E620071E4B0 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -48,7 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				931DCD0B1BE80CAC0025F6F3 /* libcrypto.a in Frameworks */,
+				725120D51BF69E660071E4B0 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				725120D21BF69E5D0071E4B0 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +98,8 @@
 		931DCCFA1BE8083E0025F6F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				931DCD0A1BE80CAC0025F6F3 /* libcrypto.a */,
+				725120D31BF69E620071E4B0 /* Security.framework */,
+				725120D11BF69E5D0071E4B0 /* Security.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -328,6 +334,10 @@
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = sqlcipher;
@@ -343,6 +353,10 @@
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = sqlcipher;
@@ -359,13 +373,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$SRCROOT/../../../vendor/couchbase-lite-libcrypto/libs/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = (
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				PRODUCT_NAME = sqlcipher;
 				SDKROOT = macosx;
@@ -381,13 +399,17 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = "$SRCROOT/../../../vendor/couchbase-lite-libcrypto/libs/include";
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				OTHER_CFLAGS = (
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				PRODUCT_NAME = sqlcipher;
 				SDKROOT = macosx;
@@ -407,6 +429,10 @@
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				PRODUCT_NAME = sqlcipher;
 				SDKROOT = macosx;
@@ -426,6 +452,10 @@
 					"-DSQLITE_HAS_CODEC",
 					"-DSQLITE_TEMP_STORE=2",
 					"-DSQLITE_THREADSAFE=2",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
 				);
 				PRODUCT_NAME = sqlcipher;
 				SDKROOT = macosx;
