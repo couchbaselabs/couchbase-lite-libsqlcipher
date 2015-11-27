@@ -114,7 +114,7 @@ model {
                 }
                 
                 if (toolChain in VisualCpp) {
-                    linker.args "Advapi32.lib", "Gdi32.lib", "User32.lib", "/DEF:sqlite3.def"
+                    linker.args "Advapi32.lib", "Gdi32.lib", "User32.lib", "/DEF:src\\def\\sqlite3.def"
                 }
             }
 
