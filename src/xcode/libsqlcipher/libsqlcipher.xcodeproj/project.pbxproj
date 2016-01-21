@@ -15,10 +15,21 @@
 		931DCD351BE81C570025F6F3 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; };
 		931DCD361BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; };
 		931DCD371BE81C570025F6F3 /* sqlite3.h in Headers */ = {isa = PBXBuildFile; fileRef = 931DCD321BE81C570025F6F3 /* sqlite3.h */; };
+		937B8A801C5043F700888F36 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 937B8A7F1C5043F700888F36 /* Security.framework */; };
+		937B8A811C50447900888F36 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 931DCD311BE81C570025F6F3 /* sqlite3.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		931DCCE71BE8044C0025F6F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		937B8A741C5042B300888F36 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
@@ -37,6 +48,8 @@
 		931DCD221BE81A2A0025F6F3 /* libsqlcipher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsqlcipher.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		931DCD311BE81C570025F6F3 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sqlite3.c; path = ../../../c/sqlite3.c; sourceTree = "<group>"; };
 		931DCD321BE81C570025F6F3 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sqlite3.h; path = ../../../headers/sqlite3.h; sourceTree = "<group>"; };
+		937B8A761C5042B300888F36 /* libsqlcipher.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libsqlcipher.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		937B8A7F1C5043F700888F36 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS9.1.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +77,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		937B8A731C5042B300888F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937B8A801C5043F700888F36 /* Security.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -71,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				931DCCEB1BE8044C0025F6F3 /* libsqlcipher */,
+				937B8A771C5042B300888F36 /* tvos-static */,
 				931DCCFA1BE8083E0025F6F3 /* Frameworks */,
 				931DCCEA1BE8044C0025F6F3 /* Products */,
 			);
@@ -82,6 +104,7 @@
 				931DCCE91BE8044C0025F6F3 /* libsqlcipher.a */,
 				931DCCFF1BE80C6A0025F6F3 /* libsqlcipher.dylib */,
 				931DCD221BE81A2A0025F6F3 /* libsqlcipher.a */,
+				937B8A761C5042B300888F36 /* libsqlcipher.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,10 +121,18 @@
 		931DCCFA1BE8083E0025F6F3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				937B8A7F1C5043F700888F36 /* Security.framework */,
 				725120D31BF69E620071E4B0 /* Security.framework */,
 				725120D11BF69E5D0071E4B0 /* Security.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		937B8A771C5042B300888F36 /* tvos-static */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "tvos-static";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +208,23 @@
 			productReference = 931DCD221BE81A2A0025F6F3 /* libsqlcipher.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		937B8A751C5042B300888F36 /* tvos-static */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 937B8A7E1C5042B300888F36 /* Build configuration list for PBXNativeTarget "tvos-static" */;
+			buildPhases = (
+				937B8A721C5042B300888F36 /* Sources */,
+				937B8A731C5042B300888F36 /* Frameworks */,
+				937B8A741C5042B300888F36 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tvos-static";
+			productName = "tvos-static";
+			productReference = 937B8A761C5042B300888F36 /* libsqlcipher.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -195,6 +243,9 @@
 					931DCD211BE81A2A0025F6F3 = {
 						CreatedOnToolsVersion = 7.0;
 					};
+					937B8A751C5042B300888F36 = {
+						CreatedOnToolsVersion = 7.2;
+					};
 				};
 			};
 			buildConfigurationList = 931DCCE41BE8044C0025F6F3 /* Build configuration list for PBXProject "libsqlcipher" */;
@@ -212,6 +263,7 @@
 				931DCCE81BE8044C0025F6F3 /* ios-static */,
 				931DCD211BE81A2A0025F6F3 /* osx-static */,
 				931DCCFE1BE80C6A0025F6F3 /* osx-dynamic */,
+				937B8A751C5042B300888F36 /* tvos-static */,
 			);
 		};
 /* End PBXProject section */
@@ -238,6 +290,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				931DCD341BE81C570025F6F3 /* sqlite3.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		937B8A721C5042B300888F36 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				937B8A811C50447900888F36 /* sqlite3.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -494,6 +554,58 @@
 			};
 			name = Release;
 		};
+		937B8A7C1C5042B300888F36 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
+					"-DSQLITE_ENABLE_LOCKING_STYLE=1",
+					"-DSQLITE_ENABLE_FTS3",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_FTS4_UNICODE61",
+					"-DSQLITE_ENABLE_RTREE",
+					"-DSQLITE_HAS_CODEC",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_POWERSAFE_OVERWRITE=1",
+					"-DSQLITE_THREADSAFE=2",
+					"-DSQLITE_TEMP_STORE=2",
+				);
+				OTHER_LDFLAGS = "-fembed-bitcode";
+				PRODUCT_NAME = sqlcipher;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		937B8A7D1C5042B300888F36 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_CFLAGS = (
+					"-DSQLITE_ENABLE_COLUMN_METADATA",
+					"-DSQLITE_ENABLE_LOCKING_STYLE=1",
+					"-DSQLITE_ENABLE_FTS3",
+					"-DSQLITE_ENABLE_FTS3_PARENTHESIS",
+					"-DSQLITE_ENABLE_FTS4",
+					"-DSQLITE_ENABLE_FTS4_UNICODE61",
+					"-DSQLITE_ENABLE_RTREE",
+					"-DSQLITE_HAS_CODEC",
+					"-DSQLCIPHER_CRYPTO_CC",
+					"-DSQLITE_POWERSAFE_OVERWRITE=1",
+					"-DSQLITE_THREADSAFE=2",
+					"-DSQLITE_TEMP_STORE=2",
+				);
+				OTHER_LDFLAGS = "-fembed-bitcode";
+				PRODUCT_NAME = sqlcipher;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -532,6 +644,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		937B8A7E1C5042B300888F36 /* Build configuration list for PBXNativeTarget "tvos-static" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				937B8A7C1C5042B300888F36 /* Debug */,
+				937B8A7D1C5042B300888F36 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
