@@ -14,13 +14,13 @@ cd src/xcode/libsqlcipher
 
 # Build static binary:
 rm -rf build
-xcodebuild -scheme tvos-static -configuration Release -derivedDataPath build
+xcodebuild -scheme tvos-static -configuration Release -derivedDataPath build archive
 
 #xcodebuild -scheme tvos-static -configuration Release -derivedDataPath build -sdk appletvsimulator
 # Workaround for XCode7.2 (https://openradar.appspot.com/23857648)
 xcodebuild -scheme tvos-static -configuration Release -derivedDataPath build -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 1080p,OS=latest'
 
-lipo -create -output $OUTPUT_DIR/libsqlcipher.a build/Build/Products/Release-appletvos/libsqlcipher.a build/Build/Products/Release-appletvsimulator/libsqlcipher.a
+lipo -create -output $OUTPUT_DIR/libsqlcipher.a build/Build/Intermediates/ArchiveIntermediates/tvos-static/IntermediateBuildFilesPath/UninstalledProducts/appletvos/libsqlcipher.a build/Build/Products/Release-appletvsimulator/libsqlcipher.a
 
 # Clean
 rm -rf build
