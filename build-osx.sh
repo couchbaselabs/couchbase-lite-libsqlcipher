@@ -13,17 +13,17 @@ mkdir $OUTPUT_DIR
 cd src/xcode/libsqlcipher
 
 # Build static binary:
-rm -rf build
-xcodebuild -scheme osx-static -configuration Release -derivedDataPath build
-cp build/Build/Products/Release/libsqlcipher.a $OUTPUT_DIR
+rm -rf output.xcarchive
+xcodebuild -scheme osx-static -configuration Release -archivePath output archive
+cp output.xcarchive/Products/usr/local/lib/libsqlcipher.a $OUTPUT_DIR
 
 # Build dynamic binary:
-rm -rf build
-xcodebuild -scheme osx-dynamic -configuration Release -derivedDataPath build
-cp build/Build/Products/Release/libsqlcipher.dylib $OUTPUT_DIR
+rm -rf output.xcarchive
+xcodebuild -scheme osx-dynamic -configuration Release -archivePath output archive
+cp output.xcarchive//Products/usr/local/lib/libsqlcipher.dylib $OUTPUT_DIR
 
 # Clean
-rm -rf build
+rm -rf output.xcarchive
 
 # Finished:
 cd ../../../
