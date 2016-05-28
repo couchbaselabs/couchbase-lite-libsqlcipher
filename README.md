@@ -70,7 +70,7 @@ Run the build script. The binaries will be output at `libs/linux`.
 ##3.4 Windows
 
 ###Requirements
-1. [Visual Studio 2013](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
+1. [Visual Studio 2015](https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx)
 
 ###Build Steps
 
