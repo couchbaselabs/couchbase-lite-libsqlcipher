@@ -27,3 +27,7 @@ xcuserdata
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
+libs/android
+libs/ios
+libs/osx
+libs/tvos

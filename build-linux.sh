@@ -6,22 +6,10 @@ set -e
 OUTPUT_DIR="`pwd`/libs/linux"
 
 # Clean output directory:
-if [ -d $OUTPUT_DIR ]; then
-    rm -rf $OUTPUT_DIR
-fi
+rm -rf $OUTPUT_DIR
 mkdir $OUTPUT_DIR
 
-# Clean build directory:
-rm -rf build
-
-# Build:
-./gradlew build
-
-# Copy binaries:
-cd build/libs
-jar xf sqlcipher.jar libs
-cp -r libs/linux/* $OUTPUT_DIR
-
-# Finished:
-cd ../../
-rm -rf build
+pushd $OUTPUT_DIR
+cmake -DCMAKE_BUILD_TYPE=MinSizeRel ../..
+make -j8
+popd
