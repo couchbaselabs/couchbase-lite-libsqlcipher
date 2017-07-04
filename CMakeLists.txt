@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 2.6)
 cmake_policy(VERSION 3.1)
 project (SqlCipher)
 
+if(WINDOWS_STORE)
+    add_definitions(-DMBEDTLS_NO_PLATFORM_ENTROPY -DSQLITE_OS_WINRT)
+endif()
 add_subdirectory(vendor/mbedtls EXCLUDE_FROM_ALL)
 
 include_directories(
