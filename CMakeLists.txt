@@ -27,15 +27,4 @@ else()
   add_definitions(-DSQLCIPHER_CRYPTO_MBEDTLS)
 endif()
 
-add_library(sqlcipher_obj OBJECT src/c/sqlite3.c src/c/crypto_mbedtls.c)
-add_library(sqlcipher SHARED $<TARGET_OBJECTS:sqlcipher_obj>)
-add_library(sqlcipher_static STATIC $<TARGET_OBJECTS:sqlcipher_obj>)
-target_link_libraries(sqlcipher PUBLIC mbedcrypto)
-
-if(APPLE)
-  set_target_properties(sqlcipher PROPERTIES LINK_FLAGS
-    "-exported_symbols_list ${CMAKE_CURRENT_LIST_DIR}/sqlite3.exp")
-elseif(MSVC)
-  set_target_properties(sqlcipher PROPERTIES LINK_FLAGS
-                "/def:\"${CMAKE_CURRENT_LIST_DIR}/sqlite3.def\"")
-endif()
+add_library(sqlcipher STATIC src/c/sqlite3.c src/c/crypto_mbedtls.c)
