@@ -31,7 +31,21 @@
 /* BEGIN SQLCIPHER */
 #ifdef SQLITE_HAS_CODEC
 #ifdef SQLCIPHER_CRYPTO_MBEDTLS
-#include "sqliteInt.h"
+
+// HACK: Get around including parse.h, which is ignored in the sqlcipher git repo
+// but included by sqliteInt.h
+typedef struct Pager Pager;
+#ifndef UINT32_TYPE
+# ifdef HAVE_UINT32_T
+#  define UINT32_TYPE uint32_t
+# else
+#  define UINT32_TYPE unsigned int
+# endif
+#endif
+typedef UINT32_TYPE Pgno;
+typedef struct Db Db;
+
+#include "sqlite3.h"
 #include "crypto.h"
 #include "sqlcipher.h"
 
@@ -40,6 +54,7 @@
 #include <mbedtls/md.h>
 #include <mbedtls/pkcs5.h>
 #include <mbedtls/cipher.h>
+#include <assert.h>
 
 #if defined(_MSC_VER) && defined(MBEDTLS_NO_PLATFORM_ENTROPY)
 #include <Windows.h>
