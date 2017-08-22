@@ -7,23 +7,23 @@ OUTPUT_DIR="`pwd`/libs/ios"
 
 # Clean output directory:
 rm -rf $OUTPUT_DIR
-mkdir $OUTPUT_DIR
 
-# Goto project directory:
-cd src/xcode/libsqlcipher
+mkdir -p $OUTPUT_DIR/device
+pushd $OUTPUT_DIR/device
+cmake -DCMAKE_TOOLCHAIN_FILE=../../../AppleDevice.cmake -DCMAKE_PLATFORM=IOS -DIOS_DEPLOYMENT_TARGET=9.0 -DCMAKE_BUILD_TYPE=MinSizeRel -DCMAKE_ENABLE_BITCODE=Yes -DPERL_EXECUTABLE=/usr/local/bin/perl ../../..
+make -j8
+popd
 
-# Build static binary:
-rm -rf build
-xcodebuild -scheme ios-static -configuration Release -derivedDataPath build archive
+mkdir -p $OUTPUT_DIR/sim
+pushd $OUTPUT_DIR/sim
+cmake -DCMAKE_TOOLCHAIN_FILE=../../../AppleDevice.cmake -DCMAKE_PLATFORM=IOS-SIMULATOR -DIOS_DEPLOYMENT_TARGET=9.0 -DCMAKE_BUILD_TYPE=MinSizeRel -DPERL_EXECUTABLE=/usr/local/bin/perl ../../..
+make -j8
+popd
 
-# Workaround for XCode7.2 (https://openradar.appspot.com/23857648)
-#xcodebuild -scheme ios-static -configuration Release -derivedDataPath build -sdk iphonesimulator archive
-xcodebuild -scheme ios-static -configuration Release -derivedDataPath build -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6,OS=latest'
+pushd $OUTPUT_DIR
+lipo -create device/libsqlcipher_static.a sim/libsqlcipher_static.a -output libsqlcipher.a
+lipo -create device/libsqlcipher.dylib sim/libsqlcipher.dylib -output libsqlcipher.dylib
 
-lipo -create -output $OUTPUT_DIR/libsqlcipher.a build/Build/Intermediates/ArchiveIntermediates/ios-static/IntermediateBuildFilesPath/UninstalledProducts/iphoneos/libsqlcipher.a build/Build/Products/Release-iphonesimulator/libsqlcipher.a
-
-# Clean
-rm -rf build
-
-# Finished:
-cd ../../../
+rm -rf device
+rm -rf sim
+popd

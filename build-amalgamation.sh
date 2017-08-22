@@ -15,7 +15,7 @@ cd vendor/sqlcipher
 git clean -dfx && git checkout -f
 
 # Configure and Make:
-./configure --enable-tempstore=yes CFLAGS="-DSQLITE_HAS_CODEC -DSQLITE_TEMP_STORE=2"
+./configure --with-crypto-lib=none
 make -C . sqlite3.c
 
 # Output:
@@ -27,6 +27,5 @@ cp sqlite3.h ../../src/headers/
 # Public headers:
 cp sqlite3.h $OUTPUT_DIR
 
-# Clean and exit:
-git clean -dfx && git checkout -f
+# Exit:
 cd ../../
