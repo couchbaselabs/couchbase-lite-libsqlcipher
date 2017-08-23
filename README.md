@@ -2,7 +2,7 @@
 
 Custom sqlcipher for Couchbase Lite
 
-The library was built with mbedTLS(https://github.com/ARMmbed/mbedtls) for all supported platforms except OSX/iOS which is using Common Crypto.
+The library was built with [mbedTLS](https://github.com/ARMmbed/mbedtls) for all supported platforms except OSX/iOS which is using Common Crypto.
 
 SQLCipher version is v3.4.1.
 
