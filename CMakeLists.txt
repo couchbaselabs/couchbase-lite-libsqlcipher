@@ -8,14 +8,29 @@ endif()
 add_subdirectory(vendor/mbedtls EXCLUDE_FROM_ALL)
 
 include_directories(
+  src/headers
   vendor/mbedtls/include
   vendor/sqlcipher
   vendor/sqlcipher/src)
 
 add_definitions(
   -DSQLITE_TEMP_STORE=2 
-  -DSQLITE_HAS_CODEC 
-  -DSQLITE_ENABLE_FTS4_UNICODE61 
+  -DSQLITE_HAS_CODEC
+  -DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1
+  -DSQLITE_LIKE_DOESNT_MATCH_BLOBS
+  -DSQLITE_OMIT_SHARED_CACHE
+  -DSQLITE_OMIT_DECLTYPE
+  -DSQLITE_OMIT_DATETIME_FUNCS
+  -DSQLITE_ENABLE_EXPLAIN_COMMENTS
+  -DSQLITE_DISABLE_FTS3_UNICODE
+  -DSQLITE_ENABLE_LOCKING_STYLE
+  -DSQLITE_ENABLE_MEMORY_MANAGEMENT
+  -DSQLITE_ENABLE_STAT4
+  -DSQLITE_HAVE_ISNAN
+  -DHAVE_GMTIME_R
+  -DHAVE_LOCALTIME_R
+  -DHAVE_USLEEP
+  -DHAVE_UTIME
   -DSQLITE_OMIT_LOAD_EXTENSION 
   -DSQLITE_ENABLE_FTS4 
   -DSQLITE_ENABLE_FTS3_TOKENIZER
@@ -27,4 +42,8 @@ else()
   add_definitions(-DSQLCIPHER_CRYPTO_MBEDTLS)
 endif()
 
-add_library(sqlcipher STATIC src/c/sqlite3.c src/c/crypto_mbedtls.c)
+set(SRC_FILES src/c/sqlite3.c)
+if(NOT APPLE)
+  set(SRC_FILES ${SRC_FILES} src/c/crypto_mbedtls.c)
+endif()
+add_library(sqlcipher STATIC ${SRC_FILES})
