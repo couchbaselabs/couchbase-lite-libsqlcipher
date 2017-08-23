@@ -26,7 +26,6 @@ add_definitions(
   -DSQLITE_ENABLE_MEMORY_MANAGEMENT
   -DSQLITE_ENABLE_STAT4
   -DSQLITE_HAVE_ISNAN
-  -DHAVE_GMTIME_R
   -DHAVE_LOCALTIME_R
   -DHAVE_USLEEP
   -DHAVE_UTIME
@@ -34,7 +33,11 @@ add_definitions(
   -DSQLITE_ENABLE_FTS4 
   -DSQLITE_ENABLE_FTS3_TOKENIZER
   -DCIPHER=\"AES-256-CBC\")                 # mbed requires a capitalized cipher (and CC will ignore it anyway)
-  
+
+if(NOT MSVC)
+  add_definitions(-DHAVE_GMTIME_R)
+endif()
+
 if(APPLE)
   add_definitions(-DSQLCIPHER_CRYPTO_CC)
 else()
