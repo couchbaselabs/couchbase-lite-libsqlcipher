@@ -68,6 +68,7 @@ static int uwp_entropy_poll(void *data, unsigned char *output, size_t len,
         return(MBEDTLS_ERR_ENTROPY_SOURCE_FAILED);
     }
     
+    *olen = len;
     return 0;
 }
 #endif
