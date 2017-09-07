@@ -44,6 +44,11 @@ else()
   add_definitions(-DSQLCIPHER_CRYPTO_MBEDTLS)
 endif()
 
+if(ANDROID)
+    # See: https://github.com/android-ndk/ndk/issues/477
+    add_definitions(-D_FILE_OFFSET_BITS=32)
+endif()
+
 set(SRC_FILES src/c/sqlite3.c)
 if(NOT APPLE)
   set(SRC_FILES ${SRC_FILES} src/c/crypto_mbedtls.c)
