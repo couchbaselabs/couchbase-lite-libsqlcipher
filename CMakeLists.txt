@@ -30,7 +30,8 @@ add_definitions(
   -DHAVE_USLEEP
   -DHAVE_UTIME
   -DSQLITE_OMIT_LOAD_EXTENSION 
-  -DSQLITE_ENABLE_FTS4 
+  -DSQLITE_ENABLE_FTS4
+  -DDSQLITE_ENABLE_FTS3_PARENTHESIS
   -DSQLITE_ENABLE_FTS3_TOKENIZER
   -DCIPHER=\"AES-256-CBC\")                 # mbed requires a capitalized cipher (and CC will ignore it anyway)
 
