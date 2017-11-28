@@ -96,9 +96,13 @@ static int sqlcipher_mbedtls_add_random(void *ctx, void *buffer, int length) {
 }
 
 static int sqlcipher_mbedtls_activate(void *ctx) {
-    int rc = 0;
+    int rc = SQLITE_OK;
     
-    if(!mbedtls_initialized) {
+#ifndef SQLCIPHER_MBEDTLS_NO_MUTEX_RAND
+    sqlite3_mutex_enter(mbedtls_rand_mutex);
+#endif
+
+    if(++mbedtls_initialized == 1) {
         mbedtls_entropy_init(&mbedtls_entropy);
 #if defined(_MSC_VER) && defined(MBEDTLS_NO_PLATFORM_ENTROPY)
         mbedtls_entropy_add_source(&mbedtls_entropy, uwp_entropy_poll, NULL, 32, MBEDTLS_ENTROPY_SOURCE_STRONG);
@@ -106,22 +110,27 @@ static int sqlcipher_mbedtls_activate(void *ctx) {
         mbedtls_ctr_drbg_init(&mbedtls_ctr_drbg);
         const unsigned char* val = (const unsigned char *)"Salty McNeal";
         rc = mbedtls_ctr_drbg_seed(&mbedtls_ctr_drbg, mbedtls_entropy_func, &mbedtls_entropy, val, strlen((const char*)val));
-        if (rc != 0) {
-            return rc;
-        }
-        
-        mbedtls_initialized = 1;
     }
+
+#ifndef SQLCIPHER_MBEDTLS_NO_MUTEX_RAND
+    sqlite3_mutex_leave(mbedtls_rand_mutex);
+#endif
     
-    return SQLITE_OK;
+    return rc;
 }
 
 static int sqlcipher_mbedtls_deactivate(void *ctx) {
-    if(mbedtls_initialized) {
+#ifndef SQLCIPHER_MBEDTLS_NO_MUTEX_RAND
+    sqlite3_mutex_enter(mbedtls_rand_mutex);
+#endif
+    if(--mbedtls_initialized == 0) {
         mbedtls_ctr_drbg_free(&mbedtls_ctr_drbg);
         mbedtls_entropy_free(&mbedtls_entropy);
-        mbedtls_initialized = 0;
     }
+
+#ifndef SQLCIPHER_MBEDTLS_NO_MUTEX_RAND
+    sqlite3_mutex_leave(mbedtls_rand_mutex);
+#endif
     
     return SQLITE_OK;
 }
