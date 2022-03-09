@@ -1,3 +1,5 @@
+⚠️ This repo is obsolete.  It was used in Couchbase Lite 1.x.
+
 # couchbase-lite-libsqlcipher #
 
 Custom sqlcipher for Couchbase Lite
